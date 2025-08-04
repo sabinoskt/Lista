@@ -1,6 +1,7 @@
 from src.util.crud.atualizar import obter_Lista_atualizar
 from src.util.crud.deletar import obter_Lista_deletar
 from src.util.crud.listar import obter_Listar
+from src.util.io import obter_conteudo_criar
 
 
 def criarLista():
@@ -8,7 +9,7 @@ def criarLista():
     try:
         quantidade = int(input("Quantos itens deseja na lista: "))
         for qtd in range(1, quantidade + 1):
-            criar = input(f"{qtd} - ")
+            criar = obter_conteudo_criar(qtd)
             lista.append(criar)
     except ValueError:
         print("\nEscolha apenas um número de item")

@@ -5,3 +5,7 @@ def obter_conteudo():
 def obter_conteudo_da_resposta():
     conteudo = input("\nResposta: ")
     return conteudo
+
+def obter_conteudo_criar(qtd):
+    conteudo = input(f"{qtd} - ")
+    return conteudo

@@ -1,4 +1,4 @@
-from src.util.crud.listar import listar
+from src.util.crud.listar import listar, recuperar_arquivo
 from src.util.crud.atualizar import atualizar
 from src.util.crud.criar import criarLista
 from src.util.crud.deletar import deletar
@@ -17,6 +17,8 @@ def escolha_opcao(opcao):
         case 4:
             deletar()
         case 5:
+            recuperar_arquivo()
+        case 6:
             encerrar()
         case _:
             print("\nEscolha apenas número a opção")
