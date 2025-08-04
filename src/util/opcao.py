@@ -1,8 +1,8 @@
-from util.crud.criar import criarLista
-from util.crud.listar import listar
-from util.crud.atualizar import atualizar
-from util.crud.deletar import deletar
-from util.encerrar import encerrar
+from src.util.crud.listar import listar
+from src.util.crud.atualizar import atualizar
+from src.util.crud.criar import criarLista
+from src.util.crud.deletar import deletar
+from src.util.encerrar import encerrar
 
 
 def escolha_opcao(opcao):
@@ -19,4 +19,4 @@ def escolha_opcao(opcao):
         case 5:
             encerrar()
         case _:
-            print("Escolha apenas número a opção")
+            print("\nEscolha apenas número a opção")

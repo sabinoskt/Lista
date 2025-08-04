@@ -1,4 +1,4 @@
-from util.lista_global import obter_lista
+from src.util.lista_global import obter_lista
 
 def obter_Listar(lista):
     global obter_lista
@@ -10,5 +10,5 @@ def listar():
         for valor, exibirLista in enumerate(obter_lista, start=1):
             print(f"{valor} - {exibirLista}")
     else:
-        print("Nada para listar")
+        print("\nNada para listar")
         

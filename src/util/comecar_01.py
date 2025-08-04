@@ -4,4 +4,4 @@ def comecar_1(indice, obter_lista):
             if indice == i:
                 obter_lista[i - 1] = input(f"{i} - ")
     else:
-        print("Índice inválido")
+        print("\nÍndice inválido")

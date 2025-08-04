@@ -1,7 +1,7 @@
-from util.io import obter_conteudo
-from util.crud.listar import listar
-from util.lista_global import obter_lista
-from util.comecar_01 import comecar_1
+from src.util.comecar_01 import comecar_1
+from src.util.crud.listar import listar
+from src.util.io import obter_conteudo
+
 
 def obter_Lista_atualizar(lista):
     global obter_lista
@@ -15,6 +15,6 @@ def atualizar():
             indice = int(obter_conteudo())
             comecar_1(indice, obter_lista)
         except ValueError:
-            print("Digite um número válido")
+            print("\nDigite um número válido")
     else:
-        print("Nada listado para atualizar")
+        print("\nNada listado para atualizar")
