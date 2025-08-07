@@ -1,5 +1,6 @@
 CAMINHO_ARQUIVO = "Bloco_de_nota.txt"
 
+
 # obter_lista_arquivo = obter_lista
 
 # Salvar toda a lista em arquivo
@@ -12,7 +13,6 @@ def salvar_arquivo(lista):
 # def adicionar_arquivo(lista):
 #     with open(CAMINHO_ARQUIVO, 'a') as arquivo:
 #         arquivo.write(str(lista))
-
 
 
 # def executar_ler_arquivo():

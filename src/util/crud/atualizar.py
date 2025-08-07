@@ -1,13 +1,15 @@
 from src.util.comecar_01 import comecar_1
 from src.util.crud.listar import listar
 from src.util.io import obter_conteudo
-from src.util.lista_global import obter_lista
+from src.util.lista_global import obter_global_lista
 
-def obter_Lista_atualizar(lista):
-    global obter_lista
-    obter_lista = lista
+
+def obter_lista_atualizar(lista):
+    obter_global_lista(lista)
+
 
 def atualizar():
+    obter_lista = obter_global_lista()
     if len(obter_lista) > 0:
         listar()
         print("\nEscolha os itens que deseja atualizar na lista")

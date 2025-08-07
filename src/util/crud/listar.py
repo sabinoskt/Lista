@@ -1,10 +1,12 @@
-from src.util.lista_global import obter_lista
+from src.util.lista_global import obter_global_lista
 
-def obter_Listar(lista):
-    global obter_lista
-    obter_lista = lista
+
+def obter_listar(lista):
+    obter_global_lista(lista)
+
 
 def listar():
+    obter_lista = obter_global_lista()
     if len(obter_lista) > 0:
         print("Lista:")
         for valor, exibirLista in enumerate(obter_lista, start=1):

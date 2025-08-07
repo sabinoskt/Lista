@@ -1,14 +1,15 @@
 from src.util.crud.listar import listar
 from src.util.deletar_comeca_01 import deletar_comeca_01
 from src.util.io import obter_conteudo
-from src.util.lista_global import obter_lista
+from src.util.lista_global import obter_global_lista
 
-def obter_Lista_deletar(lista):
-    global obter_lista
-    obter_lista = lista
+
+def obter_lista_deletar(lista):
+    obter_global_lista(lista)
 
 
 def deletar():
+    obter_lista = obter_global_lista()
     if len(obter_lista) > 0:
         listar()
         print("\nQual item deseja excluir?")
