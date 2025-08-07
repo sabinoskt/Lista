@@ -1,6 +1,9 @@
-def obter_global_lista(obter_lista=None):
-    if obter_lista is None:
-        obter_lista = []
-        return obter_lista
-    obter_lista = []
-    return obter_lista
+global_lista = []
+
+def obter_lista(lista):
+    global global_lista
+    global_lista = lista
+
+
+def obter_global_lista():
+    return global_lista

@@ -7,11 +7,11 @@ from src.util.crud.deletar import deletar
 from src.util.encerrar import encerrar
 from src.util.io import obter_conteudo
 from src.util.lista_global import obter_global_lista
+import time
 import os
 
 
 def escolha_opcao(opcao):
-    
     match int(opcao):
         case 1:
             os.system("cls")
@@ -23,7 +23,12 @@ def escolha_opcao(opcao):
             if opcao_tabela.__eq__(1):
                 criar_lista()
             elif opcao_tabela.__eq__(2):
-                adicionar()
+                lista_vazia = obter_global_lista()
+                if len(lista_vazia) == 0:
+                    print("Não é possível adicionar itens enquanto a lista estiver vazia")
+                    time.sleep(3.0)
+                else:
+                    adicionar()
             else:
                 print("\nOpção inválida. Por favor, selecione um número válido")
         case 2:
@@ -37,7 +42,8 @@ def escolha_opcao(opcao):
             deletar()
         case 5:
             os.system("cls")
-            salvar_arquivo(obter_global_lista())
+            lista = obter_global_lista()
+            salvar_arquivo(lista)
             encerrar()
         case _:
             os.system("cls")

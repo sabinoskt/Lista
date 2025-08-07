@@ -1,10 +1,5 @@
 from src.util.lista_global import obter_global_lista
 
-
-def obter_listar(lista):
-    obter_global_lista(lista)
-
-
 def listar():
     obter_lista = obter_global_lista()
     if len(obter_lista) > 0:
@@ -13,4 +8,4 @@ def listar():
             print(f"{valor} - {exibirLista}")
     else:
         print("\nNada para listar")
-    
+    return obter_lista
