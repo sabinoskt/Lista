@@ -8,4 +8,3 @@ def listar():
             print(f"{valor} - {exibirLista}")
     else:
         print("\nNada para listar")
-    return obter_lista
