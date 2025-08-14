@@ -12,7 +12,7 @@ import os
 
 
 def escolha_opcao(opcao):
-    match int(opcao):
+    match opcao:
         case 1:
             os.system("cls")
             tabela = ["Criar nova lista", "Adicionar à lista existente"]
@@ -40,11 +40,6 @@ def escolha_opcao(opcao):
         case 4:
             os.system("cls")
             deletar()
-        case 5:
-            os.system("cls")
-            lista = obter_global_lista()
-            salvar_arquivo(lista)
-            encerrar()
         case _:
             os.system("cls")
             print("\nEscolha apenas número a opção")

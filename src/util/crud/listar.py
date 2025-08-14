@@ -1,10 +1,11 @@
 from src.util.lista_global import obter_global_lista
 
+
 def listar():
-    obter_lista = obter_global_lista()
-    if len(obter_lista) > 0:
-        print("Lista:")
-        for valor, exibirLista in enumerate(obter_lista, start=1):
-            print(f"{valor} - {exibirLista}")
+    print("Lista:")
+    lista = obter_global_lista()
+    if len(lista) > 0:
+        for valor, chave in enumerate(lista, start=1):
+            print(f"{valor} - {chave}")
     else:
-        print("\nNada para listar")
+        print("Nada para listar")

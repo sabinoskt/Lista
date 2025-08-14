@@ -1,4 +1,4 @@
-def comecar_1(indice, obter_lista):
+def comecar_01(indice, obter_lista):
     if 1 <= indice <= len(obter_lista):
         for i in range(1, len(obter_lista) + 1):
             if indice == i:

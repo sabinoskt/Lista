@@ -1,4 +1,8 @@
+import os
+from src.util.arquivo import salvar_arquivo
+# from src.util.gerar_api import gerar_api
 from src.util.io import obter_conteudo
+from src.util.lista_global import obter_global_lista
 from src.util.opcao import escolha_opcao
 
 
@@ -15,9 +19,21 @@ def mostrarOpcao():
 def solicitacaoDeLista():
     while True:
         mostrarOpcao()
-        opcao = obter_conteudo()
+        opcao = int(obter_conteudo())
+        if opcao == 5:
+            os.system("cls")
+            lista = obter_global_lista()
+            salvar_arquivo(lista)
+            break
         escolha_opcao(opcao)
             
 
 def menu():
     solicitacaoDeLista()
+
+
+    # print("Gerar API?")
+    #         resp = input("resp? S/N: ")
+    #         if resp.upper() == 'S':
+    #             gerar_api()
+    #         elif resp.upper() == 'N':
