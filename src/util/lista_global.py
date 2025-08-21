@@ -1,39 +1,26 @@
-global_lista = []
+class ListaGlobal:
+    def __init__(self):
+        self._lista = []
 
-def obter_lista(lista):
-    global global_lista
-    global_lista = lista
+    def set_lista(self, nova_lista: list):
+        self._lista = nova_lista.copy()
 
+    def get_lista(self) -> list:
+        return self._lista.copy()
 
-def obter_global_lista():
-    return global_lista
+    def adicionar_item(self, item):
+        self._lista.append(item)
 
+    def atualizar_item(self, indice: int, novo_valor):
+        if 1 <= indice <= len(self._lista):
+            self._lista[indice - 1] = novo_valor
+            return True
+        return False
 
+    def deletar_item(self, indice: int):
+        if 1 <= indice <= len(self._lista):
+            return self._lista.pop(indice - 1)
+        return None
 
-# banco_de_dados = [
-#     {
-#         "marca": "Toyota",
-#         "modelo": "Corolla",
-#         "ano": 2020
-#   },
-#   {
-#         "marca": "Honda",
-#         "modelo": "Civic",
-#         "ano": 2019
-#   },
-#   {
-#         "marca": "Ford",
-#         "modelo": "Mustang",
-#         "ano": 2021
-#   },
-#   {
-#         "marca": "Chevrolet",
-#         "modelo": "Camaro",
-#         "ano": 2018
-#   },
-#   {
-#         "marca": "Volkswagen",
-#         "modelo": "Golf",
-#         "ano": 2022
-#   }
-# ]
+    def esta_vazia(self):
+        return len(self._lista) == 0

@@ -1,60 +1,70 @@
 from flask import jsonify, request, Blueprint
+from src.util.lista_global import ListaGlobal
 import json
 
 
 CAMINHO_ARQUIVO = "Bloco_de_nota.txt"
 
+lista_global = ListaGlobal()
+
+
 # Salvar toda a lista em arquivo
-def salvar_arquivo(dados):
+def salvar_arquivo(lista_global: ListaGlobal):
     with open(CAMINHO_ARQUIVO, 'w', encoding="UTF-8") as arquivo:
-        json.dump(dados, arquivo)
+        json.dump(lista_global.get_lista(), arquivo)
 
 
-def ler_dados() -> list:
+def carregar_arquivo():
     try:
         with open(CAMINHO_ARQUIVO, 'r') as ler:
-            return json.load(ler)
+             lista_global.set_lista(json.load(ler))
     except FileNotFoundError:
         print("Arquivo não encontrado")
 
-lista = ler_dados()
+
+carregar_arquivo()
 
 lista_bp = Blueprint("lista", __name__)
+acrescente_bp = Blueprint("acrescente", __name__)
+atualizar_bp = Blueprint("atualizar", __name__)
+deletar_bp = Blueprint("deletar", __name__)
+
 
 @lista_bp.route("/lista", methods=["GET"])
 def listar_arquivo():
-    if len(lista) > 0:
-        return jsonify(lista)
+    dados = lista_global.get_lista()
+    if dados:
+        return jsonify(dados)
     return jsonify({"erro": "Lista não encontrado"}), 404
 
 
-acrescente_bp = Blueprint("acrescente", __name__)
-
 @acrescente_bp.route("/acrescente", methods=["POST"])
 def criar_lista_arquivo():  
-    criar = request.json
-    lista.append(criar)
-    salvar_arquivo(lista)
-    return jsonify({"mensagem": "Tarefa criada", "dados": criar}), 200
+    novo_item = request.json
+    if not novo_item:
+        return jsonify({"erro": "Nenhum dado enviado"}), 400
+    
+    lista_global.adicionar_item(novo_item)
+    salvar_arquivo(lista_global)
+    return jsonify({"mensagem": "Item criada", "dados": novo_item}), 201
 
-
-atualizar_bp = Blueprint("atualizar", __name__)
 
 @atualizar_bp.route("/atualizar/<int:indice>", methods=["PUT"])
-def atualizar_arquivo(indice):    
-    if 0 <= indice < len(lista):
-        lista[indice] = request.json
-        salvar_arquivo(lista)
-        return jsonify({"mensagem": "Tarefa atualizada"})
-    return jsonify({"erro": "Tarefa não encontrado"}), 404
+def atualizar_arquivo(indice):
+    novo_valor = request.json
+    if not novo_valor:
+        return jsonify({"erro": "Nenhum dado enviado"}), 400
+    
+    if lista_global.atualizar_item(indice + 1, novo_valor):
+        salvar_arquivo(lista_global)
+        return jsonify({"mensagem": "Item atualizada"})
+    return jsonify({"erro": "Índice inválido"}), 404
 
-
-deletar_bp = Blueprint("deletar", __name__)
 
 @deletar_bp.route("/deletar/<int:indice>", methods=["DELETE"])
 def deletar_arquivo(indice):
-    if 0 <= indice < len(lista):
-        del lista[indice]
-        salvar_arquivo(lista)
-        return jsonify({"mensagem": "Deletada concluida"})
-    return jsonify({"erro": "Tarefa não encontrado"}), 404
+    removido = lista_global.deletar_item(indice + 1)
+    if removido is not None:
+        salvar_arquivo(lista_global)
+        return jsonify({"mensagem": "Item deletado", "dados": removido})
+    return jsonify({"erro": "Índice inválido"}), 404

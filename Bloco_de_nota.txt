@@ -1,1 +1,1 @@
-[{"marca": "Nissan", "modelo": "Versa", "ano": 2023, "cor": "Branco", "combustivel": "Flex"}, {"marca": "Renault", "modelo": "Duster", "ano": 2024, "cor": "Cinza", "combustivel": "Diesel"}, {"marca": "Fiat", "modelo": "Toro", "ano": 2023, "cor": "Vermelho", "combustivel": "Flex"}, {"ano": 1997, "combustivel": "Gasolina", "cor": "Preto", "marca": "Tesla", "modelo": "Model X"}]
+[{"marca": "Kia", "modelo": "Cerato", "ano": 2024, "cor": "Preto", "combustivel": "Gasolina"}]

@@ -1,45 +1,27 @@
-from src.util.arquivo import salvar_arquivo
 from src.util.crud.adicionar import adicionar
 from src.util.crud.listar import listar
 from src.util.crud.atualizar import atualizar
 from src.util.crud.criar import criar_lista
 from src.util.crud.deletar import deletar
-from src.util.encerrar import encerrar
-from src.util.io import obter_conteudo
-from src.util.lista_global import obter_global_lista
+from src.util.lista_global import ListaGlobal
 import time
 import os
 
 
-def escolha_opcao(opcao):
+def escolha_opcao(opcao: int, lista_global: ListaGlobal):
+    os.system("cls" if os.name == "nt" else "clear")
+
     match opcao:
         case 1:
-            os.system("cls")
-            tabela = ["Criar nova lista", "Adicionar à lista existente"]
-            print("Deseja criar uma nova lista ou adicionar itens a uma lista existente?")
-            for num, text in enumerate(tabela, start=1):
-                print(f"{num} - {text}")
-            opcao_tabela = int(obter_conteudo())
-            if opcao_tabela.__eq__(1):
-                criar_lista()
-            elif opcao_tabela.__eq__(2):
-                lista_vazia = obter_global_lista()
-                if len(lista_vazia) == 0:
-                    print("Não é possível adicionar itens enquanto a lista estiver vazia")
-                    time.sleep(3.0)
-                else:
-                    adicionar()
-            else:
-                print("\nOpção inválida. Por favor, selecione um número válido")
+            criar_lista(lista_global)
         case 2:
-            os.system("cls")
-            listar()
+            listar(lista_global)
         case 3:
-            os.system("cls")
-            atualizar()
+            adicionar(lista_global)
         case 4:
-            os.system("cls")
-            deletar()
+            atualizar(lista_global)
+        case 5:
+            deletar(lista_global)
         case _:
-            os.system("cls")
-            print("\nEscolha apenas número a opção")
+            print("Opção inválida! Escolha um número válido")
+            time.sleep(2)

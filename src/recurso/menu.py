@@ -1,39 +1,30 @@
 import os
 from src.util.arquivo import salvar_arquivo
-# from src.util.gerar_api import gerar_api
-from src.util.io import obter_conteudo
-from src.util.lista_global import obter_global_lista
+from src.util.io import obter_input_num
+from src.util.lista_global import ListaGlobal
 from src.util.opcao import escolha_opcao
 
 
-def mostrarOpcao():
-    crud = ["Criar", "Listar", "Atualizar", "Deletar", "Sair"]
+def mostrar_menu():
+    opcoes = ["Criar", "Listar", "Adicionar", "Atualizar", "Deletar", "Sair"]
     print(f"\n{'-' * 40}")
     print(f"{' ' * 17} MENU")
     print('-' * 40)
-    print("\nEscolha a opção")
-    for valor, crude in enumerate(crud, start=1):
-        print(f"[{valor}] {crude}")
+    for i, opcao in enumerate(opcoes, start=1):
+        print(f"[{i}] {opcao}")
+    return len(opcoes)
 
-
-def solicitacaoDeLista():
-    while True:
-        mostrarOpcao()
-        opcao = int(obter_conteudo())
-        if opcao == 5:
-            os.system("cls")
-            lista = obter_global_lista()
-            salvar_arquivo(lista)
-            break
-        escolha_opcao(opcao)
-            
 
 def menu():
-    solicitacaoDeLista()
+    lista_global = ListaGlobal()
+    while True:
+        qtd_opcoes = mostrar_menu()
+        opcao = obter_input_num("Escolha a opção:", minimo=1, maximo=qtd_opcoes)
 
+        if opcao == qtd_opcoes:
+            os.system("cls" if os.name == "nt" else "clear")
+            print("Saindo e salvando a lista...")
+            salvar_arquivo(lista_global)
+            break
 
-    # print("Gerar API?")
-    #         resp = input("resp? S/N: ")
-    #         if resp.upper() == 'S':
-    #             gerar_api()
-    #         elif resp.upper() == 'N':
+        escolha_opcao(opcao, lista_global)

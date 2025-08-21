@@ -1,12 +1,11 @@
-from src.util.lista_global import obter_lista
-from src.util.io import obter_conteudo_qtd, obter_conteudo_criar
+from src.util.lista_global import ListaGlobal
+from src.util.io import obter_input_num, obter_input_text
 
 
-def criar_lista():
-    lista = []
-    qtd = int(obter_conteudo_qtd())
+def criar_lista(lista_global: ListaGlobal):
+    qtd = obter_input_num("Quantos itens deseja na lista:", minimo=1)
     for i in range(1, qtd + 1):
-        criar = obter_conteudo_criar(i)
-        lista.append(criar)
-    obter_lista(lista)
+        item = obter_input_text(f"{i} -")
+        lista_global.adicionar_item(item)
+    print("\nLista criada com sucesso!")
         
