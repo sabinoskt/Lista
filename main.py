@@ -23,6 +23,6 @@ from src.util.gerar_api import gerar_api
     #     print("Opção inválida! Execute novamente e escolha 1 ou 2")
 
 
-
-# menu()
-gerar_api()
+if __name__ == "__main__":
+    # menu()
+    gerar_api()

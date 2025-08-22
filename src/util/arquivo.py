@@ -1,3 +1,4 @@
+from src.util.log import LogFileMixin
 from flask import jsonify, request, Blueprint
 from src.util.lista_global import ListaGlobal
 import json
@@ -6,7 +7,7 @@ import json
 CAMINHO_ARQUIVO = "Bloco_de_nota.txt"
 
 lista_global = ListaGlobal()
-
+log = LogFileMixin()
 
 # Salvar toda a lista em arquivo
 def salvar_arquivo(lista_global: ListaGlobal):
@@ -35,6 +36,7 @@ def listar_arquivo():
     dados = lista_global.get_lista()
     if dados:
         return jsonify(dados)
+    log.log_error("Lista não encontrado")
     return jsonify({"erro": "Lista não encontrado"}), 404
 
 
@@ -42,10 +44,12 @@ def listar_arquivo():
 def criar_lista_arquivo():  
     novo_item = request.json
     if not novo_item:
+        log.log_error("Nenhum dado enviado")
         return jsonify({"erro": "Nenhum dado enviado"}), 400
     
     lista_global.adicionar_item(novo_item)
     salvar_arquivo(lista_global)
+    log.log_success("Item criada")
     return jsonify({"mensagem": "Item criada", "dados": novo_item}), 201
 
 
@@ -53,11 +57,14 @@ def criar_lista_arquivo():
 def atualizar_arquivo(indice):
     novo_valor = request.json
     if not novo_valor:
+        log.log_error("Nenhum dado enviado")
         return jsonify({"erro": "Nenhum dado enviado"}), 400
     
     if lista_global.atualizar_item(indice + 1, novo_valor):
         salvar_arquivo(lista_global)
+        log.log_success("Item atualizada")
         return jsonify({"mensagem": "Item atualizada"})
+    log.log_error("Índice inválido")
     return jsonify({"erro": "Índice inválido"}), 404
 
 
@@ -66,5 +73,7 @@ def deletar_arquivo(indice):
     removido = lista_global.deletar_item(indice + 1)
     if removido is not None:
         salvar_arquivo(lista_global)
+        log.log_success("Item deletado")
         return jsonify({"mensagem": "Item deletado", "dados": removido})
+    log.log_error("Índice inválido")
     return jsonify({"erro": "Índice inválido"}), 404

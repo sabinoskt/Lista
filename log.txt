@@ -1,0 +1,4 @@
+[22/08/2025 10:55:03] Success: Item criada
+[22/08/2025 11:00:23] Error: Item deletado
+[22/08/2025 11:00:31] Error: Lista não encontrado
+[22/08/2025 11:01:38] Success: Item criada

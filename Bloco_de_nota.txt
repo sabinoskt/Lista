@@ -1,1 +1,1 @@
-[{"marca": "Kia", "modelo": "Cerato", "ano": 2024, "cor": "Preto", "combustivel": "Gasolina"}]
+[{"Nome": "Gabriel", "Idade": "29", "Data de nasc": 1996, "Altura": 1.78, "Peso": "60"}]
