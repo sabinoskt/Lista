@@ -9,6 +9,7 @@ CAMINHO_ARQUIVO = "Bloco_de_nota.txt"
 lista_global = ListaGlobal()
 log = LogFileMixin()
 
+
 # Salvar toda a lista em arquivo
 def salvar_arquivo(lista_global: ListaGlobal):
     with open(CAMINHO_ARQUIVO, 'w', encoding="UTF-8") as arquivo:
