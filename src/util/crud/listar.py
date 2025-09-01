@@ -15,7 +15,7 @@ def listar(lista_global: ListaGlobal):
         lista = lista3
 
     if lista:
-        for i, item in enumerate(lista, start=1):
-            print(f"{i} - {item}")
+        for item in lista:
+            print(item)
     else:    
         print("Nada para listar")

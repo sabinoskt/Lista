@@ -14,7 +14,7 @@ def obter_input_num(prompt: str, minimo: int = None, maximo: int = None) -> int:
 
 def obter_input_text(prompt: str) -> str:
     while True:
-        valor = input(f"{prompt} ").split()
+        valor = input(f"{prompt} ").split(' ')
         if valor:
             return valor
         print("Entrada inválida! Não pode estar vazia")
