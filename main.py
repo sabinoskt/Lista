@@ -1,6 +1,6 @@
 # import os
 from src.recurso.menu import menu
-from src.util.gerar_api import gerar_api
+# from src.util.gerar_api import gerar_api
 # from src.util.io import obter_input_num
 
 
@@ -24,5 +24,5 @@ from src.util.gerar_api import gerar_api
 
 
 if __name__ == "__main__":
-    # menu()
-    gerar_api()
+    menu()
+    # gerar_api()

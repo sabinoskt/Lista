@@ -18,7 +18,9 @@ def salvar_arquivo(lista_global: ListaGlobal):
 def carregar_arquivo():
     try:
         with open(CAMINHO_ARQUIVO, 'r') as ler:
-             lista_global.set_lista(json.load(ler))
+            tempjson = json.load(ler)
+            lista_global.set_lista(tempjson)
+            return tempjson
     except FileNotFoundError:
         print("Arquivo não encontrado")
 
