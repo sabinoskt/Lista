@@ -1,4 +1,4 @@
-from configuracao import cursor, TABLE_NAME, connection
+from sqlite.configuracao import cursor, TABLE_NAME, connection
 
 # cursor.execute(
 #     f"DELETE FROM sqlite_sequence WHERE name='{TABLE_NAME}'")

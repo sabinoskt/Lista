@@ -1,4 +1,4 @@
-from configuracao import cursor, connection, TABLE_NAME
+from sqlite.configuracao import cursor, connection, TABLE_NAME
 
 # CRIA TABELA
 cursor.execute(

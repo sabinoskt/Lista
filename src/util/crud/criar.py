@@ -1,5 +1,5 @@
 # from sqlite.inserir import inserir
-from sqlite.inserir import inserir
+# from sqlite.inserir import inserir
 from src.util.lista_global import ListaGlobal
 from src.util.io import obter_input_num, obter_input_text
 
@@ -13,6 +13,6 @@ def criar_lista(lista_global: ListaGlobal):
         veiculos.append(item)
 
     modelo, cor, ano = veiculos
-    inserir(modelo, cor, ano)
+    # inserir(modelo, cor, ano)
     print("\nLista criada com sucesso!")
     

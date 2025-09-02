@@ -1,5 +1,5 @@
 import sqlite3
-from configuracao import DB_FILE, TABLE_NAME
+from sqlite.configuracao import DB_FILE, TABLE_NAME
 
 
 def open_connection():
